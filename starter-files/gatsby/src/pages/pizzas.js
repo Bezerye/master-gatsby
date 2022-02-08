@@ -15,8 +15,10 @@ export default function PizzaPage({ data }) {
 }
 
 export const query = graphql`
-  query PizzaQuery {
-    pizzas: allSanityPizza {
+  query($topping: [String]) {
+    pizzas: allSanityPizza(
+      filter: { toppings: { elemMatch: { name: { in: $topping } } } }
+    ) {
       nodes {
         name
         id
