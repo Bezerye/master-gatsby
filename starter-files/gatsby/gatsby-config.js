@@ -7,9 +7,11 @@ export default {
     title: 'Slicks Slices',
     siteUrl: 'https://gatsby.pizza',
     description: 'A Gatsby website for educational purposes',
+    twitter: '@SlicksSlices',
   },
   plugins: [
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
     {
       // This is the name of the plugin
       resolve: 'gatsby-source-sanity',

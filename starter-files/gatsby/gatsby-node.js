@@ -55,7 +55,8 @@ async function turnToppingsIntoPages({ graphql, actions }) {
 }
 
 async function turnSlicemastersIntoPages({ graphql, actions }) {
-  // const toppingsTemplate = path.resolve('./src/pages/pizzas.js');
+  // Template for single slicemaster page
+  const slicemasterTemplate = path.resolve('./src/templates/Slicemaster.js');
   // Query all slicemasters
   const { data } = await graphql(`
     query {
@@ -83,6 +84,16 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
         skip: i * pageSize,
         currentPage: i + 1,
         pageSize,
+      },
+    });
+  });
+  // Create single pages too
+  data.slicemasters.nodes.forEach((slicemaster) => {
+    actions.createPage({
+      path: `slicemaster/${slicemaster.slug.current}`,
+      component: slicemasterTemplate,
+      context: {
+        slicemaster: slicemaster.slug.current,
       },
     });
   });
