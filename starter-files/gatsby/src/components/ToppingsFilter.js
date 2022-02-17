@@ -4,25 +4,24 @@ import styled from 'styled-components';
 
 const ToppingStyles = styled.div`
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 4rem;
-
   a {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0 1rem;
+    grid-gap: 0 1rem;
     align-items: center;
+    padding: 5px;
     background: var(--grey);
     border-radius: 2px;
-    padding: 5px;
     text-decoration: none;
-
+    font-size: clamp(1.5rem, 1.4vw, 2.5rem);
     .count {
       background: white;
       padding: 2px 5px;
     }
-    &[aria-current] {
+    &[aria-current='page'] {
       background: var(--yellow);
     }
   }
